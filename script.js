@@ -73,7 +73,7 @@ const displaySomeNames = (e) => {
     })
     .catch((err) => {
       console.error(err);
-      container.textContent = "Sorry, there is a problem displaying all names";
+      container.textContent = "Sorry, there is a problem displaying pokemon names";
       container.style.display = "flex";
     });
 };
