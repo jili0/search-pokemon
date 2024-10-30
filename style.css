@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: rgb(71, 50, 23);
+}
+
+body {
+  width: 80vw;
+  max-width: 24rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 50vh;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+input,
+button {
+  font: inherit;
+  border-radius: 6px;
+  border: none;
+  padding-inline: 0.8rem;
+}
+
+input {
+  flex-grow: 1;
+}
+
+button {
+  background-color: orange;
+  color: whitesmoke;
+}
+
+button:hover {
+  opacity: .7;
+}
+
+button:active {
+  opacity: .9;
+}
+
+.info {
+  color: whitesmoke;
+}
+
+.container {
+  width: 100%;
+  background-color: goldenrod;
+  border-radius: 6px;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  overflow: auto;
+  display: none;
+}
+
+.card-name {
+  background-color: whitesmoke;
+  width: 60%;
+  font-size: 1.5rem;
+}
+
+.card-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 0.5rem solid whitesmoke;
+}
+
+.card-stats-title,
+.card-abilities-title {
+  font-weight: 600;
+  border-bottom: 2px solid whitesmoke;
+  margin-bottom: -0.5rem;
+}
+
+.card-stats-container {
+  width: 90%;
+  padding-inline: 1rem;
+}
+
+.card-stats-item {
+  display: flex;
+  justify-content: space-between;
+}
