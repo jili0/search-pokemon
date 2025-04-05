@@ -176,7 +176,7 @@ button:active {
   max-width: none;
   border-radius: var(--radius);
   box-shadow: none;
-  margin-right: 0; /* Remove right margin */
+  margin: 20px;
 }
 
 /* Pokemon Card Styles */
