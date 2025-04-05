@@ -89,11 +89,6 @@ body {
   text-align: center;
   transition: all 0.4s ease;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  white-space: nowrap;
-}
-
-.search-active .app-title {
-  text-align: left;
 }
 
 .info {
