@@ -7,53 +7,23 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <form action="">
-      <input type="text" placeholder="search pokermon: e.g. Pikachu" />
-      <button id="searchBtn">Search</button>
-    </form>
-    <form action="">
-      <p class="info">Don't know what to search? </p>
-      <button id="displayNamesBtn">Display some names</button>
-    </form>
-    <div id="container" class="container">
-      <!-- <p class="card-name">Pikachu</p>
-      <img
-        class="card-img"
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-      />
-      <p class="card-stats-title">Stats</p>
-      <div class="card-stats-container">
-        <div class="card-stats-item">
-          <p>hp</p>
-          <p>35</p>
-        </div>
-        <div class="card-stats-item">
-          <p>attack</p>
-          <p>55</p>
-        </div>
-        <div class="card-stats-item">
-          <p>defense</p>
-          <p>40</p>
-        </div>
-        <div class="card-stats-item">
-          <p>special-attack</p>
-          <p>50</p>
-        </div>
-        <div class="card-stats-item">
-          <p>special-defense</p>
-          <p>50</p>
-        </div>
-        <div class="card-stats-item">
-          <p>speed</p>
-          <p>90</p>
-        </div>
+    <div class="app-wrapper">
+      <div class="search-column">
+        <h1 class="app-title">Pokemon Search</h1>
+        <form action="">
+          <input type="text" placeholder="Search pokemon: e.g. Pikachu" />
+          <button id="searchBtn">Search</button>
+        </form>
+        <form action="">
+          <p class="info">Don't know what to search?</p>
+          <button id="displayNamesBtn">Display some names</button>
+        </form>
       </div>
-      <p class="card-abilities-title">Abilities</p>
-      <div class="card-abilities-container">
-        <p class="card-abilities-item">static</p>
-        <p class="card-abilities-item">lightning-rod</p>
+      
+      <div id="container" class="display-column">
+        <!-- Pokemon data will be displayed here -->
       </div>
-    </div> -->
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,3 +1,17 @@
+.card-abilities-item:last-child {
+  border-bottom: none;
+}:root {
+  --primary: #4361ee;
+  --primary-dark: #3a56d4;
+  --secondary: #7209b7;
+  --accent: #f72585;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,98 +19,342 @@
 }
 
 html {
-  background-color: rgb(71, 50, 23);
+  background: linear-gradient(120deg, #4361ee, #7209b7);
+  height: 100vh;
 }
 
 body {
-  width: 80vw;
-  max-width: 24rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-height: 50vh;
-  padding: 1rem;
-  line-height: 1.5;
+  height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
+/* Main app container - centered by default with glassmorphism */
+.app-wrapper {
+  width: 90%;
+  max-width: 400px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.4s ease;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* The app wrapper changes to two-column layout when has 'search-active' class */
+.app-wrapper.search-active {
+  flex-direction: row;
+  max-width: 1000px;
+  height: 90vh;
+  padding: 0;
+  border-radius: var(--radius);
+  margin-right: 20px;
+}
+
+/* Search controls */
+.search-column {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  transition: all 0.4s ease;
+}
+
+/* Change search column when search is active */
+.search-active .search-column {
+  width: 35%;
+  min-width: 300px;
+  align-items: flex-start;
+}
+
+.app-title {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+  transition: all 0.4s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+.search-active .app-title {
+  text-align: left;
+}
+
+/* Form Elements */
 form {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 input,
 button {
   font: inherit;
-  border-radius: 6px;
   border: none;
-  padding-inline: 0.8rem;
+  transition: var(--transition);
+  border-radius: var(--radius);
+  width: 100%;
 }
 
 input {
-  flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 12px 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+input:focus {
+  outline: none;
+  background-color: white;
+  box-shadow: var(--shadow);
+}
+
+input::placeholder {
+  color: #9ca3af;
+  font-size: 0.85rem;
 }
 
 button {
-  background-color: orange;
-  color: whitesmoke;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  padding: 12px 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 button:hover {
-  opacity: .7;
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
 }
 
 button:active {
-  opacity: .9;
+  transform: translateY(0);
+}
+
+#displayNamesBtn {
+  background-color: var(--secondary);
 }
 
 .info {
-  color: whitesmoke;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.container {
+.search-active .info {
+  text-align: left;
+}
+
+/* Right column - Pokemon info */
+.display-column {
+  display: none; /* Initially hidden */
   width: 100%;
-  background-color: goldenrod;
-  border-radius: 6px;
-  padding: 1rem;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: var(--radius);
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  text-align: center;
-  overflow: auto;
-  display: none;
+  margin-top: 20px;
 }
 
+/* Display column when search is active */
+.search-active .display-column {
+  width: 65%;
+  max-width: none;
+  border-radius: var(--radius);
+  box-shadow: none;
+  margin-right: 20px;
+}
+
+/* Pokemon Card */
 .card-name {
-  background-color: whitesmoke;
-  width: 60%;
-  font-size: 1.5rem;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: white;
+  width: 70%;
+  max-width: 300px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 25px;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  box-shadow: var(--shadow);
 }
 
 .card-img {
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
   border-radius: 50%;
-  border: 0.5rem solid whitesmoke;
+  background: radial-gradient(circle, #f8f9fa, #e9ecef);
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: var(--transition);
+  border: 3px solid #8a70d6;
+}
+
+/* Horizontal layout for stats and abilities */
+.pokemon-data {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* Stats Section */
+.stats-section {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.abilities-section {
+  width: 35%;
+  min-width: 130px;
 }
 
 .card-stats-title,
 .card-abilities-title {
-  font-weight: 600;
-  border-bottom: 2px solid whitesmoke;
-  margin-bottom: -0.5rem;
+  position: relative;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--dark);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.card-stats-title::after,
+.card-abilities-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  border-radius: 2px;
 }
 
 .card-stats-container {
-  width: 90%;
-  padding-inline: 1rem;
+  width: 100%;
+  background-color: rgba(138, 112, 214, 0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .card-stats-item {
   display: flex;
   justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 0.95rem;
+}
+
+.card-stats-item:last-child {
+  border-bottom: none;
+}
+
+.card-stats-item p:first-child {
+  font-weight: 500;
+  color: #343a40;
+  text-transform: capitalize;
+}
+
+.card-stats-item p:last-child {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Abilities Section - Vertical Layout */
+.card-abilities-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgba(138, 112, 214, 0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.card-abilities-item {
+  padding: 8px 12px;
+  text-transform: capitalize;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.card-abilities-item:hover {
+  background-color: transparent;
+}
+
+/* Error State */
+.error-message {
+  color: var(--primary);
+  text-align: center;
+  padding: 30px;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+/* Display Names List */
+.names-container .card-abilities-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .app-wrapper.search-active {
+    flex-direction: column;
+    height: auto;
+    min-height: 90vh;
+  }
+  
+  .search-active .search-column, 
+  .search-active .display-column {
+    width: 100%;
+    min-width: 0;
+  }
+  
+  .search-active .search-column {
+    padding: 20px;
+  }
+  
+  .search-active .display-column {
+    padding: 20px 15px;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+  
+  .pokemon-data {
+    flex-direction: column;
+  }
+  
+  .abilities-section {
+    width: 100%;
+  }
+  
+  .card-abilities-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
